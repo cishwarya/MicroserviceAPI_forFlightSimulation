@@ -1,16 +1,14 @@
-package io.flightlog.init;
+package io.flightlog.controller;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
-import com.mongodb.MongoClient;
 
 import io.flightlog.dao.DAO;
+import io.flightlog.dto.Person;
 
 @RestController
 public class Controller {
@@ -19,9 +17,6 @@ public class Controller {
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
 	public String get(){
 		System.out.println("connecting...");
-/*		MongoClient mongoClient = new MongoClient("172.17.0.2", 27017);
-		DB database = mongoClient.getDB("testdb");*/
-		
 		
     	DBCursor cursor = DAO.getCollectionAccess("Person").find();
     	String output = null;
@@ -29,12 +24,16 @@ public class Controller {
 		System.out.println("Starting...");
     	while(cursor.hasNext()) {
     		output += cursor.next();
-    	    System.out.println("hello : "+output);
+    	    System.out.println(output);
     	}		
-		return "Hello World! "+output;
+		return "Record from database "+output;
 	}
 	
 	
+	
+	
+	
+
 	/* curl -H "Content-Type: application/json" -X POST -d '{"name" : "Thishanth", "age" : 16}' http://localhost:8080/post */
 	@RequestMapping(value = "/post", method = RequestMethod.POST)
 	public void post(@RequestBody Person person){
