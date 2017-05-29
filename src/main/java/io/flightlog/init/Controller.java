@@ -1,4 +1,4 @@
-package com.example.demo;
+package io.flightlog.init;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +10,8 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 
+import io.flightlog.dao.DAO;
+
 @RestController
 public class Controller {
 	
@@ -17,13 +19,13 @@ public class Controller {
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
 	public String get(){
 		System.out.println("connecting...");
-		MongoClient mongoClient = new MongoClient("172.17.0.2", 27017);
-		DB database = mongoClient.getDB("testdb");
-		DBCollection collection = database.getCollection("Person");
+/*		MongoClient mongoClient = new MongoClient("172.17.0.2", 27017);
+		DB database = mongoClient.getDB("testdb");*/
 		
 		
-    	DBCursor cursor = collection.find();
+    	DBCursor cursor = DAO.getCollectionAccess("Person").find();
     	String output = null;
+    	
 		System.out.println("Starting...");
     	while(cursor.hasNext()) {
     		output += cursor.next();

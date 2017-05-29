@@ -1,4 +1,4 @@
-package com.example.demo;
+package io.flightlog.init;
 
 public class Person {
 	private String name;
