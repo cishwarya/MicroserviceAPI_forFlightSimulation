@@ -1,6 +1,12 @@
 package io.flightlog.dto;
 
+/**
+ * The Class FlightLog.
+ * Object to Mongodb mapper
+ */
 public class FlightLog {
+	
+	/*following variables are the flight log data*/
 	
 	private double sNo;
 	private double pm_iAddrModeS;

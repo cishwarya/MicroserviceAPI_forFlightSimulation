@@ -1,5 +1,10 @@
 package io.flightlog.dto;
 
+/**
+ * The Class Person.
+ * Object mapPer
+ * WILL BE DELETE SOON
+ */
 public class Person {
 	private String name;
 	private int age;
