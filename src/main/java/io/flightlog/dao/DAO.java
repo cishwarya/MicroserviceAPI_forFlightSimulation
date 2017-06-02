@@ -5,6 +5,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 
 
+@SuppressWarnings("deprecation")
 public class DAO {
 	/** The mongoDB client. */
 	private static MongoClient mongoClient= null;
@@ -26,7 +27,6 @@ public class DAO {
 	/**
 	 * Initialise the database.
 	 */
-	@SuppressWarnings("deprecation")
 	public static void initDB() {
 		try {
 			mongoClient = new MongoClient(ip, port);
@@ -65,5 +65,4 @@ public class DAO {
 	public static DBCollection getCollectionAccess(String collectionName) {
 		return DAO.getDB().getCollection(collectionName);
 	}
-
 }
