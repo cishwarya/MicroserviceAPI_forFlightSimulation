@@ -1,0 +1,4 @@
+docker run -it --name mongo -d mongo
+docker build -t flightlog:1.0 .
+docker run -it -p 8080:8080 --name flightlog -d flightlog:1.0
+
