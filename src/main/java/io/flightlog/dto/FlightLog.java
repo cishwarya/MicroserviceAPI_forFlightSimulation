@@ -20,6 +20,7 @@ public class FlightLog {
 	private String pm_dAirSpeed;
 	private String pm_dGroundSpeed;
 	private String pm_dVerticalSpeed;
+	
 	public String getsNo() {
 		return sNo;
 	}

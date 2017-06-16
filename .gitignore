@@ -31,4 +31,4 @@ nbdist/
 # Maven
 log/
 target/
-
+bin/

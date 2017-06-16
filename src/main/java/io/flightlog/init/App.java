@@ -18,6 +18,5 @@ public class App  {
 	public static void main(String[] args) {			
 		SpringApplication.run(App.class, args); /* Startup the server and scan controllers and other MVC related tasks */ 
 		DAO.initDB(); /* connect with mongoDB and create db object to application use */
-	}
-	
+	}	
 }
