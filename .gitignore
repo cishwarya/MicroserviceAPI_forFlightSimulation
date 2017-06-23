@@ -33,3 +33,5 @@ nbdist/
 log/
 target/
 bin/
+.mvn
+.mvn/
