@@ -32,7 +32,7 @@ Build the Docker-images
 $ docker build -t flightlog:1.0 .
 
 Step 5:
-Run the flightLog container. Which you had build in last step.
+Run the flightlog container.
 $ docker run -it -p 8080:8080 --name flightlog -d flightlog:1.0
 
 Step 6:
@@ -42,10 +42,10 @@ $ curl -H "Content-Type: application/json" -X POST -d '{"sNo":"0.03", "pm_iAddrM
 hint - you will get "Saved" response
 GET:
 $ curl -X GET http://localhost:8080/get/0.03/
-hint: you will get big json response.
+hint: you will get json response.
 
 Step 7:
-Please extract the "runnable.zip". Which is ship with this project.
+Extract the "runnable.zip". Which is ship with this project.
 Which has two jar files.
 producer.jar
 consumer.jar
