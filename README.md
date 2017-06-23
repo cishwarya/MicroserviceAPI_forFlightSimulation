@@ -15,7 +15,7 @@ tt14@tu-clausthal.de
 **Step 1:**  
 You need a running mongodb docker container.  
 Run the following command to get a running mongodb container in your local system.  
-$ *docker run -it --name mongo -d mongo*
+$ ```*docker run -it --name mongo -d mongo*```
 
 **Step 2:**  
 Get the IPAddress of the mongodb container. Which you had run on the last step.  
