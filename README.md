@@ -15,11 +15,11 @@ tt14@tu-clausthal.de
 **Step 1:**  
 You need a running mongodb docker container.  
 Run the following command to get a running mongodb container in your local system.  
-$ ```*docker run -it --name mongo -d mongo*```
+$ ```docker run -it --name mongo -d mongo```
 
 **Step 2:**  
 Get the IPAddress of the mongodb container. Which you had run on the last step.  
-$ *docker inspect <container-id>*  
+$ ```docker inspect <container-id>```  
 Hint: You will get IPAddress by run the above command.  
 
 Edit the mongodb container IPAddress in the following java file.  
@@ -27,15 +27,15 @@ Edit the mongodb container IPAddress in the following java file.
 
 **Step 3:**  
 Build the jar file. This is a maven project. Hence, run the following command to build.  
-$ *mvn package*  
+$ ```mvn package```  
 
 **Step 4:**  
 Build the Docker-images  
-$ *docker build -t flightlog:1.0 .*  
+$ ```docker build -t flightlog:1.0 .```  
 
 **Step 5:**  
 Run the flightlog container.  
-$ *docker run -it -p 8080:8080 --name flightlog -d flightlog:1.0*  
+$ ```docker run -it -p 8080:8080 --name flightlog -d flightlog:1.0```  
 
 **Step 6:**
 Run the following command to check the API.  
