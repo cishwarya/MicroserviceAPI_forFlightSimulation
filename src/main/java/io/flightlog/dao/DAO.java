@@ -20,8 +20,10 @@ public class DAO {
 	/** The ip. 
 	 * uses to connect the database from different host*/
 	/*private static String ip = "localhost";*/
-	private static String ip = "172.17.0.2";
-	
+	private static String ip = "172.31.0.11";
+	/*private static String ip = "172.17.0.2";*/
+
+
 	/** The port to access the database. */
 	private static int port = 27017;
 

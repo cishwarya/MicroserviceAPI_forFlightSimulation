@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+  .alert-success{ border-radius: 0px; }
+  </style>
+	<title>Deploy | Flight Log</title>
+</head>
+<body>
+	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+		<button class="navbar-toggler navbar-toggler-right" 
+						type="button" 
+						data-toggle="collapse" 
+						data-target="#nav-content" 
+						aria-controls="nav-content" 
+						aria-expanded="false" 
+						aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Brand -->
+		<a class="navbar-brand" href="#"></a>
+
+		<!-- Links -->
+		<div class="collapse navbar-collapse" id="nav-content">   
+			<ul class="navbar-nav">
+				<li class="nav-item">
+				<a class="nav-link" href="/">Home</a>
+				</li>
+				<li class="nav-item">
+				<a class="nav-link" href="consume">Consume</a>
+				</li>
+				<li class="nav-item">
+				<a class="nav-link active" href="deploy">Deploy</a>
+				</li>
+			</ul>			
+		</div>
+	</nav>
+
+
+
+
+
+
+	<br><br>
+
+<div class="container">
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-8" style="background-color: #f8f8f8; padding: 7px;">
+				<br/>
+				<div style="color: #558d38">
+				  <h5>
+				  	<center>
+				  		<u>
+				  			<strong>Deploy the whole service yourself</strong>
+				  		</u>
+				  	</center>
+				  </h5>				  				  
+				</div>
+				<br>
+				<strong>Please mail us for repository access</strong><br>
+				ishwarya.chandrasekaran@stud.uni-hannover.de<br/>
+				tt14@tu-clausthal.de
+
+				<br><br>
+				<p>This is a spring boot application with GET and POST method. <br/>Which should run in docker container.</p>
+
+				<strong  style="color: #558d38">Prerequisite:</strong>
+				<br>Java 8
+				<br>Docker engine
+
+				<br><br><strong>Follow the following Steps to run the complete system.</strong><br>
+				In case any issue or question. Contact us on<br>
+				<i>ishwarya.chandrasekaran@stud.uni-hannover.de<br/>
+				tt14@tu-clausthal.de</i>
+
+				<br><br><span  style="color: #558d38">Step 1:</span> <br>		
+				You need a running mongodb docker container.
+				<br>Run the following command to get a running mongodb container in your local system.
+				<br>$ <i style="color: #5b5c5b;">docker run -it --name mongo -d mongo</i>
+
+				<br><br><span  style="color: #558d38">Step 2:</span> <br>		
+				Get the IPAddress of the mongodb container. Which you had run on the last step.
+				<br>$ <i style="color: #5b5c5b;">docker inspect &lt;container-id&gt;</i>
+				<br> Hint: You will get IPAddress by run the above command.  
+				<br><br>Edit the mongodb container IPAddress in the following java file.
+				<br><i style="color: #5b5c5b;">io.flightlog.dao.DAO.java  </i>
+
+
+
+				<br><br><span  style="color: #558d38">Step 3:</span> <br>		
+				Build the jar file. This is a maven project. Hence, run the following command to build.
+				<br>$ <i style="color: #5b5c5b;">mvn package</i>
+
+
+
+
+
+				<br><br><span  style="color: #558d38">Step 4:</span> <br>		
+				Build the Docker-images
+				<br>$ <i style="color: #5b5c5b;">docker build -t flightlog:1.0 .</i>
+
+
+
+
+
+				<br><br><span  style="color: #558d38">Step 5:</span> <br>		
+				Run the flightlog container.
+				<br>$ <i style="color: #5b5c5b;">docker run -it -p 8080:8080 --name flightlog -d flightlog:1.0</i>
+
+
+
+				<br><br><span  style="color: #558d38">Step 6:</span> <br>		
+				Run the following command to check the API. <br>POST:
+				<br>$ <i style="color: #5b5c5b;">
+					curl -H "Content-Type: application/json" -X POST -d '{"sNo":"0.03", "pm_iAddrModeS":"2", "pm_dLatitude":"52.308928", "pm_dLongitude":"10.373013", "pm_dAltitudeMSL":"500.000000","pm_dRoll": "0.001500", "pm_dPitch":"0.180390", "pm_dHeading":"1.396260", "pm_dGroundTrack":"1.444650", "pm_dAirSpeed":"66.902228", "pm_dGroundSpeed":"92.341750", "pm_dVerticalSpeed":"0.005334"}' http://&lt;ipaddress-in-address-bar&gt;:8080/post
+				</i> 
+				<br>hint : you will get "Saved" response
+				<br><br>GET:
+				<br>$ <i style="color: #5b5c5b;">curl -X GET http://&lt;ipaddress-in-address-bar&gt;:8080/get/0.03/</i>
+				<br>hint: you will get json response.  
+
+
+				<br><br><span  style="color: #558d38">Step 7:</span> <br>		
+				Extract the "runnable.zip". Which you can download <a href="https://www.dropbox.com/sh/wsoeuyhp5ul1w8y/AABcWI5SCztpTVxQ7EgbVeuFa?dl=0" style="color: #245269">here</a>
+				or mail us for repository access. 
+				<br><br>Run the following command to send data to rest-api 
+				<br>$ <i style="color: #5b5c5b;">java -jar producer.jar TraficServerLog.txt</i>		
+				<br>
+				<br>Run the following command to consume the data from rest-api
+				<br>$ <i style="color: #5b5c5b;">java -jar consumer.jar</i>				
+
+
+
+
+
+				<br><br><br><br>
+			</div>
+			<div class="col"></div>
+		</div>
+	</div>    
+</body>
+</html>
