@@ -1,0 +1,8 @@
+bx login
+sudo docker push thishanth/flightlog:1.0
+bx ic ps -a
+bx ic images
+
+bx ic cpi thishanth/flightlog:1.0 registry.eu-gb.bluemix.net/thish/flightlog:2.0
+
+bx ic run -it -p 8080:8080 --name flightlog -d registry.eu-gb.bluemix.net/thish/flightlog:2.0
